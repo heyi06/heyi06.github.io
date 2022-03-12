@@ -20,23 +20,32 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.9.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
-<meta property="og:type" content="website">
-<meta property="og:title" content="小贻子的博客">
-<meta property="og:url" content="http://example.com/index.html">
+<meta name="description" content="泰拉亚服务器搭建 使用的是Centos-7.6系统完成泰拉瑞亚服务器的搭建  前情提要在早些时候被朋友安利 Terraria ，但由于不明原因，我加入朋友游戏和他们加入我的游戏， 延迟非常高，游戏体验非常不好，就暂时没玩了。 就在最近，入手了一台百度云的1核2G的服务器，再加上朋友的邀请。(和朋友一起探索还是快乐) 便有了这篇。 搭建参考 个人搭建时所参考的一些文章   熠星辰大佬的Linux系统">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Centos7下搭建塔拉瑞亚服务器">
+<meta property="og:url" content="http://example.com/2022/03/12/Centos7%E4%B8%8B%E6%90%AD%E5%BB%BA%E5%A1%94%E6%8B%89%E7%91%9E%E4%BA%9A%E6%9C%8D%E5%8A%A1%E5%99%A8/index.html">
 <meta property="og:site_name" content="小贻子的博客">
+<meta property="og:description" content="泰拉亚服务器搭建 使用的是Centos-7.6系统完成泰拉瑞亚服务器的搭建  前情提要在早些时候被朋友安利 Terraria ，但由于不明原因，我加入朋友游戏和他们加入我的游戏， 延迟非常高，游戏体验非常不好，就暂时没玩了。 就在最近，入手了一台百度云的1核2G的服务器，再加上朋友的邀请。(和朋友一起探索还是快乐) 便有了这篇。 搭建参考 个人搭建时所参考的一些文章   熠星辰大佬的Linux系统">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/xiaooyz/image-bad/raw/master/image/20220312171344.png">
+<meta property="article:published_time" content="2022-03-12T08:34:00.000Z">
+<meta property="article:modified_time" content="2022-03-12T10:11:26.472Z">
 <meta property="article:author" content="小贻子">
+<meta property="article:tag" content="游戏">
+<meta property="article:tag" content="服务器">
+<meta property="article:tag" content="Terraria">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/xiaooyz/image-bad/raw/master/image/20220312171344.png">
 
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2022/03/12/Centos7%E4%B8%8B%E6%90%AD%E5%BB%BA%E5%A1%94%E6%8B%89%E7%91%9E%E4%BA%9A%E6%9C%8D%E5%8A%A1%E5%99%A8/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/03/12/Centos7%E4%B8%8B%E6%90%AD%E5%BB%BA%E5%A1%94%E6%8B%89%E7%91%9E%E4%BA%9A%E6%9C%8D%E5%8A%A1%E5%99%A8/","path":"2022/03/12/Centos7下搭建塔拉瑞亚服务器/","title":"Centos7下搭建塔拉瑞亚服务器"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>小贻子的博客</title>
+<title>Centos7下搭建塔拉瑞亚服务器 | 小贻子的博客</title>
   
 
 
@@ -65,7 +74,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">小贻子的博客</h1>
+      <p class="site-title">小贻子的博客</p>
       <i class="logo-line"></i>
     </a>
   </div>
@@ -102,7 +111,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -115,6 +124,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B3%B0%E6%8B%89%E4%BA%9A%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA"><span class="nav-number">1.</span> <span class="nav-text">泰拉亚服务器搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E6%83%85%E6%8F%90%E8%A6%81"><span class="nav-number">1.1.</span> <span class="nav-text">前情提要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%90%AD%E5%BB%BA%E5%8F%82%E8%80%83"><span class="nav-number">1.2.</span> <span class="nav-text">搭建参考</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E5%85%88%E5%87%86%E5%A4%87"><span class="nav-number">1.3.</span> <span class="nav-text">事先准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BA"><span class="nav-number">1.4.</span> <span class="nav-text">开始搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AEswap%E7%9A%84%E5%A4%A7%E5%B0%8F"><span class="nav-number">1.4.1.</span> <span class="nav-text">设置swap的大小</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E5%B9%B6%E4%B8%94%E6%96%B0%E5%BB%BAswap%E5%88%86%E5%8C%BA"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">删除并且新建swap分区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%90%AF%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">重启服务器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%90%AD%E5%BB%BA%E6%B8%B8%E6%88%8F%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">1.4.2.</span> <span class="nav-text">搭建游戏服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E9%9C%80%E8%A6%81%E7%9A%84%E8%BD%AF%E4%BB%B6"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">安装需要的软件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E6%9C%8D%E5%8A%A1%E5%8C%85"><span class="nav-number">1.4.2.2.</span> <span class="nav-text">下载服务包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E5%8E%8B%E5%92%8C%E5%88%9B%E5%BB%BA%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">1.4.2.3.</span> <span class="nav-text">解压和创建配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8%E6%96%87%E4%BB%B6%E4%B8%AD%E5%86%99%E5%85%A5%E5%86%85%E5%AE%B9"><span class="nav-number">1.4.2.4.</span> <span class="nav-text">在文件中写入内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E9%98%B2%E7%81%AB%E5%A2%997777%E7%AB%AF%E5%8F%A3"><span class="nav-number">1.4.2.5.</span> <span class="nav-text">开防火墙7777端口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%99%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%90%E8%A1%8C%E6%96%87%E4%BB%B6%E8%AE%BE%E7%BD%AE%E6%9D%83%E9%99%90%E5%B9%B6%E8%BF%90%E8%A1%8C"><span class="nav-number">1.4.2.6.</span> <span class="nav-text">给服务器运行文件设置权限并运行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%86%8D%E6%AC%A1%E8%BF%90%E8%A1%8C"><span class="nav-number">1.4.2.7.</span> <span class="nav-text">修改配置文件再次运行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E5%9C%B0%E5%9B%BE%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="nav-number">1.4.2.8.</span> <span class="nav-text">关于地图的创建</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">1.4.3.</span> <span class="nav-text">启动服务器</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -169,16 +179,17 @@
 </noscript>
 
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/12/Centos7%E4%B8%8B%E6%90%AD%E5%BB%BA%E5%A1%94%E6%8B%89%E7%91%9E%E4%BA%9A%E6%9C%8D%E5%8A%A1%E5%99%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -191,9 +202,9 @@
       <meta itemprop="name" content="小贻子的博客">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/12/Centos7%E4%B8%8B%E6%90%AD%E5%BB%BA%E5%A1%94%E6%8B%89%E7%91%9E%E4%BA%9A%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="post-title-link" itemprop="url">Centos7下搭建塔拉瑞亚服务器</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          Centos7下搭建塔拉瑞亚服务器
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -217,7 +228,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="泰拉亚服务器搭建"><a href="#泰拉亚服务器搭建" class="headerlink" title="泰拉亚服务器搭建"></a>泰拉亚服务器搭建</h1><blockquote>
+        <h1 id="泰拉亚服务器搭建"><a href="#泰拉亚服务器搭建" class="headerlink" title="泰拉亚服务器搭建"></a>泰拉亚服务器搭建</h1><blockquote>
 <p>使用的是Centos-7.6系统完成泰拉瑞亚服务器的搭建</p>
 </blockquote>
 <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>在早些时候被朋友安利 Terraria ，但由于不明原因，我加入朋友游戏和他们加入我的游戏， 延迟非常高，游戏体验非常不好，就暂时没玩了。</p>
@@ -320,7 +331,6 @@
 
 <p>这样子就可以在云服务器后台保持24小时运行不间断了，玩家可以随时连接服务器。<br>到这里开始你就已经可以通过<code>IP+端口号</code>进行连接服务器和朋友一起联机了。</p>
 
-      
     </div>
 
     
@@ -328,94 +338,27 @@
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+          <div class="post-tags">
+              <a href="/tags/%E6%B8%B8%E6%88%8F/" rel="tag"># 游戏</a>
+              <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag"># 服务器</a>
+              <a href="/tags/Terraria/" rel="tag"># Terraria</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/01/25/hello-world/" rel="prev" title="Hello World">
+                  <i class="fa fa-chevron-left"></i> Hello World
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
     </footer>
   </article>
 </div>
 
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/25/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="小贻子">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="小贻子的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/01/25/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-01-25 13:59:52" itemprop="dateCreated datePublished" datetime="2022-01-25T13:59:52+08:00">2022-01-25</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-01-23 11:29:30" itemprop="dateModified" datetime="2022-01-23T11:29:30+08:00">2022-01-23</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
 
 
 
