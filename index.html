@@ -202,9 +202,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2022-03-12 16:34:00 / 修改时间：18:11:26" itemprop="dateCreated datePublished" datetime="2022-03-12T16:34:00+08:00">2022-03-12</time>
+      <time title="创建时间：2022-03-12 16:34:00" itemprop="dateCreated datePublished" datetime="2022-03-12T16:34:00+08:00">2022-03-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-03-13 11:39:29" itemprop="dateModified" datetime="2022-03-13T11:39:29+08:00">2022-03-13</time>
     </span>
 
   
@@ -223,14 +229,6 @@
 <h2 id="前情提要"><a href="#前情提要" class="headerlink" title="前情提要"></a>前情提要</h2><p>在早些时候被朋友安利 Terraria ，但由于不明原因，我加入朋友游戏和他们加入我的游戏， 延迟非常高，游戏体验非常不好，就暂时没玩了。</p>
 <p>就在最近，入手了一台百度云的1核2G的服务器，再加上朋友的邀请。<del>(和朋友一起探索还是快乐)</del></p>
 <p>便有了这篇。</p>
-<h2 id="搭建参考"><a href="#搭建参考" class="headerlink" title="搭建参考"></a>搭建参考</h2><blockquote>
-<p>个人搭建时所参考的一些文章</p>
-</blockquote>
-<ol>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44501322">熠星辰</a>大佬的<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44501322/article/details/111184568">Linux系统从零搭建泰拉瑞亚服务器</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/heartsdance">柴狗狗</a>大佬的<a target="_blank" rel="noopener" href="https://blog.csdn.net/heartsdance/article/details/122585494">linux搭建泰拉瑞亚（Terraria）服务器</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/u013867763">上杉隐月月</a>大佬的<a target="_blank" rel="noopener" href="https://blog.csdn.net/u013867763/article/details/104289519">Linux/CentOS7搭建泰拉瑞亚原版/mod服务器教程</a></li>
-</ol>
 <h2 id="事先准备"><a href="#事先准备" class="headerlink" title="事先准备"></a>事先准备</h2><ol>
 <li><strong>远程连接工具及其使用</strong>: <a target="_blank" rel="noopener" href="https://www.xshellcn.com/xiazai.html">Xshell7， Xftp7</a></li>
 <li><strong>Linux操作系统的基础操作</strong>: 比如ls，./，vim编辑器的使用</li>
@@ -315,10 +313,99 @@
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 移动到服务器目录下</span><br><span class="line">cd /opt/terraria/1436/Linux</span><br><span class="line"># 启动新窗口-terraria</span><br><span class="line">screen -s terraria</span><br><span class="line"># 开启服务器并指定配置文件</span><br><span class="line">./TerrariaServer.bin.x86_64 -config /opt/terraria/terraria-sever/serverconfig</span><br></pre></td></tr></table></figure>
 
-<p>等服务器创建好以后,<code>Ctrl+A+D</code>就会退出当前窗口,并且 Terraria服务器 不会被关闭,<br>另外 Terraria服务器 的停止请一定要输入<code>exit</code>,而不是直接按<code>Ctrl+C</code>,那样的话服务器的记录不会保存。</p>
+<p>等服务器创建好以后,<code>Ctrl+A+D</code>就会退出当前窗口,并且 Terraria服务器 不会被关闭,<br>另外 <strong>Terraria服务器</strong> 的停止请一定要输入<code>exit</code>，而不是直接按<code>Ctrl+C</code>，<code>Ctrl+C</code>会使<strong>Terraria服务器的记录不会保存</strong>。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 重新连接到你的screen窗口</span><br><span class="line">screen -R terraria</span><br></pre></td></tr></table></figure>
 
-<p>这样子就可以在云服务器后台保持24小时运行不间断了，玩家可以随时连接服务器。<br>到这里开始你就已经可以通过<code>IP+端口号</code>进行连接服务器和朋友一起联机了。</p>
+<p>这样子就可以在云服务器后台保持24小时运行不间断了，玩家可以随时连接服务器。<br>至此，Terraria 服务器就搭建好了。<br>就已经可以通过<code>IP+端口号</code>进行连接服务器和朋友一起联机了。</p>
+<h3 id="制作自动启动脚本"><a href="#制作自动启动脚本" class="headerlink" title="制作自动启动脚本"></a>制作自动启动脚本</h3><h4 id="新建脚本文件"><a href="#新建脚本文件" class="headerlink" title="新建脚本文件"></a>新建脚本文件</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /opt/terraria</span><br><span class="line">vim terraria.sh</span><br></pre></td></tr></table></figure>
+
+<h4 id="在打开的Vim窗口输入"><a href="#在打开的Vim窗口输入" class="headerlink" title="在打开的Vim窗口输入"></a>在打开的Vim窗口输入</h4><table>
+<thead>
+<tr>
+<th align="center">参数</th>
+<th align="center">说明</th>
+<th align="center">其他</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">SCNAME</td>
+<td align="center">创建screen窗口的名字</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">TERA_VER</td>
+<td align="center">Terraria-sever的版本</td>
+<td align="center">每次更新需要更改</td>
+</tr>
+<tr>
+<td align="center">BIN_PATH</td>
+<td align="center">服务器文件路径</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">SERVICE</td>
+<td align="center">服务器执行文件</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">CONFIG</td>
+<td align="center">serverconfig的存放位置</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">USERNAME=&#x27;root&#x27;</span><br><span class="line">SCNAME=&#x27;terraria&#x27;</span><br><span class="line">TERA_VER=&#x27;1436&#x27;</span><br><span class="line">BIN_PATH=&quot;/opt/terraria/$TERA_VER/Linux/&quot;</span><br><span class="line">SERVICE=&#x27;TerrariaServer.bin.x86_64&#x27;</span><br><span class="line">CONFIG=&#x27;/opt/terraria/terraria-server/serverconfig&#x27;</span><br><span class="line"></span><br><span class="line">ME=`whoami`</span><br><span class="line"></span><br><span class="line">if [ $ME != $USERNAME ] ; then</span><br><span class="line">   echo &quot;Please run the $USERNAME user.&quot;</span><br><span class="line">   exit</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">start() &#123;</span><br><span class="line">   if pgrep -u $USERNAME -f $SERVICE &gt; /dev/null ; then</span><br><span class="line">       echo &quot;$SERVICE is already running!&quot;</span><br><span class="line">       exit</span><br><span class="line">   fi</span><br><span class="line"></span><br><span class="line">   echo &quot;Starting $SERVICE...&quot;</span><br><span class="line">   screen -AmdS $SCNAME $BIN_PATH$SERVICE -config $CONFIG</span><br><span class="line">   exit</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">stop() &#123;</span><br><span class="line">   if pgrep -u $USERNAME -f $SERVICE &gt; /dev/null ; then</span><br><span class="line">       echo &quot;Stopping $SERVICE &quot;</span><br><span class="line">   else</span><br><span class="line">       echo &quot;$SERVICE is not running!&quot;</span><br><span class="line">       exit</span><br><span class="line">   fi</span><br><span class="line"></span><br><span class="line">   screen -p 0 -S $SCNAME -X eval &#x27;stuff &quot;say SERVER SHUTTING DOWN IN 10 SECONDS. &quot;\015&#x27;</span><br><span class="line">   sleep 10</span><br><span class="line">   screen -p 0 -S $SCNAME -X eval &#x27;stuff &quot;exit&quot;\015&#x27;</span><br><span class="line">   exit</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">save() &#123;</span><br><span class="line">   echo &#x27;World data saving...&#x27;</span><br><span class="line">   screen -p 0 -S $SCNAME -X eval &#x27;stuff &quot;say World saveing...&quot;\015&#x27;</span><br><span class="line">   screen -p 0 -S $SCNAME -X eval &#x27;stuff &quot;save&quot;\015&#x27;</span><br><span class="line">   exit</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">status() &#123;</span><br><span class="line">   if pgrep -u $USERNAME -f $SERVICE &gt; /dev/null ; then</span><br><span class="line">                echo &quot;$SERVICE is running!&quot;</span><br><span class="line">                exit</span><br><span class="line">   else</span><br><span class="line">       echo &quot;$SERVICE is not running!&quot;</span><br><span class="line">       exit</span><br><span class="line">        fi</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">case &quot;$1&quot; in</span><br><span class="line">   start)</span><br><span class="line">       start</span><br><span class="line">       ;;</span><br><span class="line">   stop)</span><br><span class="line">       stop</span><br><span class="line">       ;;</span><br><span class="line">   save)</span><br><span class="line">       save</span><br><span class="line">       ;;</span><br><span class="line">   status)</span><br><span class="line">       status</span><br><span class="line">       ;;</span><br><span class="line">   *)</span><br><span class="line">       echo  $&quot;Usage: $0 &#123;start|stop|status|save&#125;&quot;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
+
+<p>保存退出<code>:wq</code></p>
+<p>这样就分别有了「<strong>启动</strong>」「<strong>停止</strong>」「<strong>保存</strong>」「<strong>状态</strong>」了，分别对应</p>
+<table>
+<thead>
+<tr>
+<th align="center">功能</th>
+<th align="center">命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">服务器启动</td>
+<td align="center">/opt/terraria/terraria.sh start</td>
+</tr>
+<tr>
+<td align="center">服务器停止</td>
+<td align="center">/opt/terraria/terraria.sh stop</td>
+</tr>
+<tr>
+<td align="center">确认状态</td>
+<td align="center">/opt/terraria/terraria.sh status</td>
+</tr>
+<tr>
+<td align="center">保存世界存档</td>
+<td align="center">/opt/terraria/terraria.sh save</td>
+</tr>
+</tbody></table>
+<h4 id="启动测试脚本"><a href="#启动测试脚本" class="headerlink" title="启动测试脚本"></a>启动测试脚本</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod 744 terraria.sh</span><br><span class="line">sh -x ./terraria.sh start</span><br></pre></td></tr></table></figure>
+
+<h4 id="用screen检查是否正常启动"><a href="#用screen检查是否正常启动" class="headerlink" title="用screen检查是否正常启动"></a>用screen检查是否正常启动</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">screen -ls</span><br></pre></td></tr></table></figure>
+
+<p>出现下图的内容就ok了<br><img src="https://gitee.com/xiaooyz/image-bad/raw/master/image/20220313111407.png"></p>
+<p>如果这时候想进入服务器后台只需要输入<code>screen -r</code>就会跳转到服务器后台。</p>
+<h3 id="设置脚本自动启动"><a href="#设置脚本自动启动" class="headerlink" title="设置脚本自动启动"></a>设置脚本自动启动</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /etc/systemd/system</span><br><span class="line">vim terraria.service</span><br></pre></td></tr></table></figure>
+
+<p><strong>在打开的vim窗口输入</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Terraria Server</span><br><span class="line">After=network.target local-fs.target</span><br><span class="line"> </span><br><span class="line">[Service]</span><br><span class="line">Type=forking</span><br><span class="line">User=root</span><br><span class="line">ExecStart=/opt/terraria/terraria.sh start</span><br><span class="line">ExecStop=/opt/terraria/terraria.sh stop</span><br><span class="line"> </span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<p>保存退出<code>:wq</code></p>
+<h4 id="使能terraria-service"><a href="#使能terraria-service" class="headerlink" title="使能terraria.service"></a>使能terraria.service</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable terraria</span><br></pre></td></tr></table></figure>
+
+<h4 id="重启服务器-1"><a href="#重启服务器-1" class="headerlink" title="重启服务器"></a>重启服务器</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure>
+
+<p>重启后<code>screen -ls</code> 出现下图的内容就说明自启动成功了<br><img src="https://gitee.com/xiaooyz/image-bad/raw/master/image/20220313111407.png"></p>
+<h3 id="设置自动保存等定时任务"><a href="#设置自动保存等定时任务" class="headerlink" title="设置自动保存等定时任务"></a>设置自动保存等定时任务</h3><h4 id="安装所需服务"><a href="#安装所需服务" class="headerlink" title="安装所需服务"></a>安装所需服务</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum -y install cronie </span><br><span class="line">systemctl enable crond</span><br><span class="line">systemctl start crond</span><br></pre></td></tr></table></figure>
+
+<h4 id="编辑定时任务"><a href="#编辑定时任务" class="headerlink" title="编辑定时任务"></a>编辑定时任务</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/crontab</span><br></pre></td></tr></table></figure>
+
+<p><strong>在打开的vim窗口输入</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*/30 * * * * root /opt/terraria/terraria.sh save</span><br><span class="line">5 3 * * * root /opt/terraria/terraia.sh stop</span><br><span class="line">0 8 * * * root /opt/terraria/terraia.sh start</span><br></pre></td></tr></table></figure>
+
+<p>这代表30min保存一次，每天凌晨3点5分关闭Terraria服务器，8点开启Terraria服务器。可以将*/30改为*/10，就变成10min保存一次了，关闭、开启的时间也可以自己定义。</p>
 
       
     </div>
