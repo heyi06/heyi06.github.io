@@ -230,7 +230,7 @@
 <p>便有了这篇。</p>
 <h2 id="事先准备"><a href="#事先准备" class="headerlink" title="事先准备"></a>事先准备</h2><ol>
 <li><strong>远程连接工具及其使用</strong>: <a target="_blank" rel="noopener" href="https://www.xshellcn.com/xiazai.html">Xshell7， Xftp7</a></li>
-<li><strong>Linux操作系统的基础操作</strong>: 比如ls，./，vim编辑器的使用</li>
+<li><strong>Linux操作系统的基础操作</strong>: 比如ls，.&#x2F;，vim编辑器的使用</li>
 </ol>
 <span id="more"></span>
 
@@ -239,7 +239,7 @@
 
 <p><img src="https://gitee.com/xiaooyz/image-bad/raw/master/image/20220312171344.png"><br>注意箭头所指的地方，若大于2048，那么可以直接进行服务器的搭建</p>
 <h4 id="删除并且新建swap分区"><a href="#删除并且新建swap分区" class="headerlink" title="删除并且新建swap分区"></a>删除并且新建swap分区</h4><ol>
-<li><strong>将/etc/fstab文件中所有设置为swap的设备关闭</strong></li>
+<li><strong>将&#x2F;etc&#x2F;fstab文件中所有设置为swap的设备关闭</strong></li>
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">swapoff -a </span><br></pre></td></tr></table></figure>
 
@@ -364,19 +364,19 @@
 </thead>
 <tbody><tr>
 <td align="center">服务器启动</td>
-<td align="center">/opt/terraria/terraria.sh start</td>
+<td align="center">&#x2F;opt&#x2F;terraria&#x2F;terraria.sh start</td>
 </tr>
 <tr>
 <td align="center">服务器停止</td>
-<td align="center">/opt/terraria/terraria.sh stop</td>
+<td align="center">&#x2F;opt&#x2F;terraria&#x2F;terraria.sh stop</td>
 </tr>
 <tr>
 <td align="center">确认状态</td>
-<td align="center">/opt/terraria/terraria.sh status</td>
+<td align="center">&#x2F;opt&#x2F;terraria&#x2F;terraria.sh status</td>
 </tr>
 <tr>
 <td align="center">保存世界存档</td>
-<td align="center">/opt/terraria/terraria.sh save</td>
+<td align="center">&#x2F;opt&#x2F;terraria&#x2F;terraria.sh save</td>
 </tr>
 </tbody></table>
 <h4 id="启动测试脚本"><a href="#启动测试脚本" class="headerlink" title="启动测试脚本"></a>启动测试脚本</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod 744 terraria.sh</span><br><span class="line">sh -x ./terraria.sh start</span><br></pre></td></tr></table></figure>
@@ -403,7 +403,7 @@
 <p><strong>在打开的vim窗口输入</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*/30 * * * * root /opt/terraria/terraria.sh save</span><br><span class="line">5 3 * * * root /opt/terraria/terraia.sh stop</span><br><span class="line">0 8 * * * root /opt/terraria/terraia.sh start</span><br></pre></td></tr></table></figure>
 
-<p>这代表30min保存一次，每天凌晨3点5分关闭Terraria服务器，8点开启Terraria服务器。可以将*/30改为*/10，就变成10min保存一次了，关闭、开启的时间也可以自己定义。</p>
+<p>这代表30min保存一次，每天凌晨3点5分关闭Terraria服务器，8点开启Terraria服务器。可以将*&#x2F;30改为*&#x2F;10，就变成10min保存一次了，关闭、开启的时间也可以自己定义。</p>
 
     </div>
 
